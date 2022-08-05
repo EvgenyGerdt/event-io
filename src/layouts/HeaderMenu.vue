@@ -54,11 +54,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onBeforeMount, onBeforeUnmount } from "vue";
 import { useRoute } from "vue-router";
-import type { RouteLocationNormalized } from "vue-router";
+import useSocket from "@/hooks/useSocket";
 
 import Loader from "@/layouts/Loader.vue";
+
+import Connection from "@/models/Connection";
+
+import type { RouteLocationNormalized } from "vue-router";
 
 export default defineComponent({
   name: "HeaderMenu",
@@ -68,7 +72,26 @@ export default defineComponent({
   },
 
   setup() {
+    const socket = useSocket();
     const route: RouteLocationNormalized = useRoute();
+
+    onBeforeMount(() => socket.emit("user_connected",
+        {
+          user: new Connection({
+            userId: localStorage.getItem('id') as string,
+            id: socket.id,
+          })
+        })
+    );
+
+    onBeforeUnmount(() => socket.emit("user_disconnected",
+        {
+          user: new Connection({
+            userId: localStorage.getItem('id') as string,
+            id: socket.id,
+          })
+        })
+    );
 
     return {
       route,

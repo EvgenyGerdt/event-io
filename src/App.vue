@@ -1,5 +1,5 @@
 <template>
-  <RouterView v-slot="{ Component }" v-if="!isAuthenticated">
+  <RouterView v-slot="{ Component }" v-if="!auth.isAuthenticated">
     <component :is="Component"/>
     <VulkanBackground />
     <BalloonBackground />
@@ -14,8 +14,9 @@
 </template>
 
 <script lang="ts">
-import {computed, defineComponent} from "vue";
+import { defineComponent, onBeforeMount, onBeforeUnmount } from "vue";
 import { useRoute } from "vue-router";
+import useSocket from "@/hooks/useSocket";
 
 import { useAuth } from "@/stores/auth";
 
@@ -39,11 +40,13 @@ export default defineComponent({
   setup() {
     const auth = useAuth();
     const route = useRoute();
+    const socket = useSocket();
 
-    const isAuthenticated = computed(() => auth.isAuthenticated);
+    onBeforeMount(() => socket.connect());
+    onBeforeUnmount(() => socket.disconnect());
 
     return {
-      isAuthenticated,
+      auth,
       route,
     };
   },

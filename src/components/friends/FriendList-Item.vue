@@ -18,6 +18,7 @@
       <font-awesome-icon
           class="friend-item__controls-message"
           icon="message"
+          @click="enterToChat"
       />
     </div>
 
@@ -31,6 +32,7 @@
       <font-awesome-icon
           class="friend-item__controls-message"
           icon="message"
+          @click="enterToChat"
       />
     </div>
 
@@ -55,6 +57,7 @@
 
 <script lang="ts">
 import { defineComponent, computed } from "vue";
+import { useRouter } from "vue-router";
 
 import { useFriends } from "@/stores/friends";
 
@@ -99,12 +102,16 @@ export default defineComponent({
   },
 
   setup(props) {
+    const router = useRouter();
     const friends = useFriends();
     const emptyAvatarInitials = computed(() => `${props.firstName.charAt(0)}${props.lastName.charAt(0)}`);
+
+    const enterToChat = () => router.push({ name: "Chat", params: { id: props.id } });
 
     return {
       friends,
       emptyAvatarInitials,
+      enterToChat,
     };
   },
 })

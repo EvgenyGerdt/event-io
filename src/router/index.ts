@@ -38,6 +38,13 @@ const router = createRouter({
           path: "/messages",
           name: "Messages",
           component: () => import("@/views/Profile/MessagesView.vue"),
+          children: [
+            {
+              path: "/messages/:id",
+              name: "Chat",
+              component: () => import("@/views/Chat/Chat.vue"),
+            },
+          ],
         },
         {
           path: "/events",
@@ -62,6 +69,10 @@ router.beforeEach((to, from, next) => {
 
   if (!isAuthenticated && to.meta.requiredAuth) {
     next({ name: 'Auth' });
+  }
+
+  if(to.path === '/' && isAuthenticated) {
+    next({ name: 'Profile' });
   }
 
   next();
