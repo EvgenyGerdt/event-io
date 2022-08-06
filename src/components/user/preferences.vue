@@ -1,17 +1,13 @@
 <template>
   <div class="preferences">
-    <div class="preferences">
-
-    </div>
+    <div class="preferences"></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "preferences"
-}
+  name: "preferences-box",
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

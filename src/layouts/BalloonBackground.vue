@@ -3,11 +3,11 @@
 </template>
 
 <script>
-import SvgImg from "../svg-img.vue";
+import SvgImg from "../components/ui/svg-img.vue";
 export default {
   name: "BalloonBackground",
-  components: { SvgImg }
-}
+  components: { SvgImg },
+};
 </script>
 
 <style scoped>

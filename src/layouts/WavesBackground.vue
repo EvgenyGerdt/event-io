@@ -3,11 +3,12 @@
 </template>
 
 <script>
-import SvgImg from "../svg-img.vue";
+import SvgImg from "../components/ui/svg-img.vue";
+
 export default {
-  name: "Waves",
-  components: { SvgImg }
-}
+  name: "WavesBackground",
+  components: { SvgImg },
+};
 </script>
 
 <style scoped>
@@ -15,5 +16,7 @@ export default {
   position: absolute;
   bottom: 0;
   z-index: -1;
+
+  height: 400px;
 }
 </style>

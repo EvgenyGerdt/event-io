@@ -1,6 +1,10 @@
 <template>
   <div class="chat-view__container">
-    <div class="chat-view__message" v-for="(message, index) in chat.messages" :key="`${message}_${index}`">
+    <div
+      class="chat-view__message"
+      v-for="(message, index) in chat.messages"
+      :key="`${message}_${index}`"
+    >
       <p>{{ message.from }}</p>
       <p>{{ message.text }}</p>
     </div>
@@ -22,10 +26,10 @@ import useSocket from "@/hooks/useSocket";
 import type { ChatMessage } from "@/types/ChatMessage";
 
 export default defineComponent({
-  name: "Chat",
+  name: "ChatView",
 
   setup() {
-    const messageField = ref('');
+    const messageField = ref("");
     const route = useRoute();
     const socket = useSocket();
 
@@ -35,7 +39,7 @@ export default defineComponent({
       const message: ChatMessage = {
         text: messageField.value,
         date: Date.now().toString(),
-        from: localStorage.getItem('id') as string,
+        from: localStorage.getItem("id") as string,
         to: route.params.id as string,
       };
 
@@ -56,6 +60,4 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

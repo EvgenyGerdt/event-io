@@ -3,46 +3,22 @@
     <div class="auth-view__form">
       <h1>EVENT MANAGER</h1>
 
-      <input
-          v-model="state.username"
-          placeholder="Username"
-          type="text"
-      />
-      <input
-          v-model="state.email"
-          placeholder="Email"
-          type="email"
-      />
-      <input
-          v-model="state.password"
-          placeholder="Password"
-          type="password"
-      />
-      <input
-          v-model="state.firstName"
-          placeholder="First Name"
-          type="text"
-      />
-      <input
-          v-model="state.lastName"
-          placeholder="Last Name"
-          type="text"
-      />
+      <input v-model="state.username" placeholder="Username" type="text" />
+      <input v-model="state.email" placeholder="Email" type="email" />
+      <input v-model="state.password" placeholder="Password" type="password" />
+      <input v-model="state.firstName" placeholder="First Name" type="text" />
+      <input v-model="state.lastName" placeholder="Last Name" type="text" />
 
       <select v-model="state.gender" id="genders" name="genders">
-        <option :value="true">
-          Male
-        </option>
-        <option :value="false">
-          Female
-        </option>
+        <option :value="true">Male</option>
+        <option :value="false">Female</option>
       </select>
 
       <input
-          v-model="state.birthday"
-          placeholder="Birthday"
-          type="date"
-          lang="en-US"
+        v-model="state.birthday"
+        placeholder="Birthday"
+        type="date"
+        lang="en-US"
       />
 
       <button @click="handleRegister">Sign up</button>
@@ -71,18 +47,17 @@ export default defineComponent({
     const router: Router = useRouter();
     const auth = useAuth();
     const state: Ref<RegisterCredentials> = ref({
-      username: '',
-      email: '',
-      password: '',
-      firstName: '',
-      lastName: '',
+      username: "",
+      email: "",
+      password: "",
+      firstName: "",
+      lastName: "",
       gender: true,
-      birthday: '',
+      birthday: "",
     });
 
     const handleRegister = () => {
-      auth.register(state.value)
-          .then(() => router.push('/'));
+      auth.register(state.value).then(() => router.push("/"));
     };
 
     return {
@@ -99,7 +74,8 @@ export default defineComponent({
     height: 100vh;
   }
 
-  &__wrapper, &__form {
+  &__wrapper,
+  &__form {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -116,14 +92,16 @@ export default defineComponent({
     }
 
     > h1 {
-      background-image: -webkit-linear-gradient(45deg, #3AACFF, #D639EF);
+      background-image: -webkit-linear-gradient(45deg, #3aacff, #d639ef);
       background-size: 100%;
       background-repeat: repeat;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    > input, button, select {
+    > input,
+    button,
+    select {
       height: 45px;
       width: 100%;
 
@@ -133,12 +111,13 @@ export default defineComponent({
       border-radius: 15px;
     }
 
-    > input, select {
+    > input,
+    select {
       background-color: #f8f8f8;
       border: 1px solid transparent;
 
       &:focus {
-        transition: .3s ease;
+        transition: 0.3s ease;
         border: 1px solid dodgerblue;
       }
     }
@@ -146,7 +125,7 @@ export default defineComponent({
     > button {
       border: transparent;
 
-      background: linear-gradient(45deg, #3AACFF, #D639EF);
+      background: linear-gradient(45deg, #3aacff, #d639ef);
       color: white;
 
       &:hover {

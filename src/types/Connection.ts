@@ -1,4 +1,4 @@
 export type SocketConnection = {
-    id: string;
-    userId: string;
-}
+  id: string;
+  userId: string;
+};

@@ -9,11 +9,8 @@
         <div class="friend-item__main-info-name">
           {{ firstName }} {{ lastName }}
         </div>
-        <div
-            class="friend-item__main-info-status"
-            :class="{ online: online }"
-        >
-          {{ online ? 'Online' : 'Offline' }}
+        <div class="friend-item__main-info-status" :class="{ online: online }">
+          {{ online ? "Online" : "Offline" }}
         </div>
       </div>
     </div>
@@ -52,7 +49,9 @@ export default defineComponent({
   },
 
   setup(props) {
-    const emptyAvatarInitials = computed(() => `${props.firstName.charAt(0)}${props.lastName.charAt(0)}`);
+    const emptyAvatarInitials = computed(
+      () => `${props.firstName.charAt(0)}${props.lastName.charAt(0)}`
+    );
 
     return {
       emptyAvatarInitials,
@@ -71,7 +70,7 @@ export default defineComponent({
 
   cursor: pointer;
 
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 
   &:hover {
     opacity: 0.7;
@@ -91,7 +90,7 @@ export default defineComponent({
 
       height: 40px;
       width: 40px;
-      background: -webkit-linear-gradient(#3AACFF, #D639EF);
+      background: -webkit-linear-gradient(#3aacff, #d639ef);
       border-radius: 50%;
 
       margin-right: 5px;
@@ -107,26 +106,27 @@ export default defineComponent({
       }
 
       &-status {
-        color: #A0A0A0;
+        color: #a0a0a0;
         font-weight: lighter;
       }
 
       &-status.online {
-        color: #3AACFF;
+        color: #3aacff;
       }
 
-      &-name, &-status {
+      &-name,
+      &-status {
         font-size: 16px;
       }
     }
   }
 
   &__chat {
-    color: #A0A0A0;
-    transition: all .3s ease;
+    color: #a0a0a0;
+    transition: all 0.3s ease;
 
     &:hover {
-      color: #3AACFF;
+      color: #3aacff;
     }
   }
 }

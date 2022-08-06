@@ -1,13 +1,13 @@
 <template>
   <div class="friends-list">
     <friend-item
-        class="friends-list__item"
-        v-for="friend in friends"
-        :id="friend.id"
-        :first-name="friend.firstName"
-        :last-name="friend.lastName"
-        :online="friend.online"
-        :key="`${friend.id}_${friend.firstName}`"
+      class="friends-list__item"
+      v-for="friend in friends"
+      :id="friend.id"
+      :first-name="friend.firstName"
+      :last-name="friend.lastName"
+      :online="friend.online"
+      :key="`${friend.id}_${friend.firstName}`"
     />
   </div>
 </template>
@@ -18,8 +18,8 @@ import { defineComponent } from "vue";
 import FriendItem from "@/components/user/friends/friend-item.vue";
 
 export default defineComponent({
-  name: "friends",
-  components: {FriendItem},
+  name: "friends-box",
+  components: { FriendItem },
   setup() {
     const friends: any[] = [
       {
@@ -50,7 +50,7 @@ export default defineComponent({
 
     return {
       friends,
-    }
+    };
   },
 });
 </script>

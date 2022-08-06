@@ -2,13 +2,13 @@
   <div class="friends-view__container">
     <div class="friends-view__search">
       <input
-          v-model="searchField"
-          class="friends-view__search-input"
-          placeholder="Enter search field..."
+        v-model="searchField"
+        class="friends-view__search-input"
+        placeholder="Enter search field..."
       />
       <font-awesome-icon
-          class="friends-view__search-icon"
-          icon="magnifying-glass"
+        class="friends-view__search-icon"
+        icon="magnifying-glass"
       />
     </div>
 
@@ -47,7 +47,7 @@ export default defineComponent({
   },
 
   setup() {
-    const searchField = useDebouncedRef('', 1000, false);
+    const searchField = useDebouncedRef("", 1000, false);
     const friends = useFriends();
 
     watch(searchField, (newValue) => friends.findList(newValue));
@@ -85,7 +85,7 @@ export default defineComponent({
       border-radius: 15px;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
 
-      transition: all .3s ease;
+      transition: all 0.3s ease;
 
       &:focus {
         box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
@@ -101,9 +101,9 @@ export default defineComponent({
       left: 15px;
       top: 30%;
 
-      transition: all .3s ease;
+      transition: all 0.3s ease;
 
-      color: #A0A0A0;
+      color: #a0a0a0;
     }
   }
 }

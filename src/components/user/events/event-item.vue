@@ -8,20 +8,18 @@
         <div class="event-item__main-info-name">
           {{ name }}
         </div>
-        <div class="event-item__main-info-time">
-          When: {{ date }}
-        </div>
+        <div class="event-item__main-info-time">When: {{ date }}</div>
       </div>
     </div>
 
     <div class="event-item__controls">
       <font-awesome-icon
-          class="event-item__controls-location"
-          icon="location-dot"
+        class="event-item__controls-location"
+        icon="location-dot"
       />
       <font-awesome-icon
-          class="event-item__controls-angle"
-          icon="angle-right"
+        class="event-item__controls-angle"
+        icon="angle-right"
       />
     </div>
   </div>
@@ -61,7 +59,7 @@ export default defineComponent({
     return {
       emptyAvatarInitials,
     };
-  }
+  },
 });
 </script>
 
@@ -75,7 +73,7 @@ export default defineComponent({
 
   cursor: pointer;
 
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 
   &:hover {
     opacity: 0.7;
@@ -95,7 +93,7 @@ export default defineComponent({
 
       height: 40px;
       width: 40px;
-      background: -webkit-linear-gradient(#3AACFF, #D639EF);
+      background: -webkit-linear-gradient(#3aacff, #d639ef);
       border-radius: 50%;
 
       margin-right: 5px;
@@ -111,11 +109,12 @@ export default defineComponent({
       }
 
       &-time {
-        color: #A0A0A0;
+        color: #a0a0a0;
         font-weight: lighter;
       }
 
-      &-name, &-status {
+      &-name,
+      &-status {
         font-size: 16px;
       }
     }
@@ -126,14 +125,15 @@ export default defineComponent({
       margin-right: 20px;
     }
 
-    &-angle, &-location {
-      color: #A0A0A0;
-      transition: all .3s ease;
+    &-angle,
+    &-location {
+      color: #a0a0a0;
+      transition: all 0.3s ease;
 
       font-size: 24px;
 
       &:hover {
-        color: #3AACFF;
+        color: #3aacff;
       }
     }
   }

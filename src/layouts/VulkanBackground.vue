@@ -1,15 +1,15 @@
 <template>
-  <svg-img class="circle cr-1" name="Circle" height="100" width="100"/>
-  <svg-img class="circle cr-2" name="Circle" height="20" width="20"/>
-  <svg-img class="circle cr-3" name="Circle" height="65" width="65"/>
-  <svg-img class="circle cr-4" name="Circle" height="60" width="60"/>
-  <svg-img class="circle cr-5" name="Circle" height="20" width="20"/>
-  <svg-img class="circle cr-6" name="Circle" height="20" width="20"/>
-  <svg-img class="circle cr-7" name="Circle" height="20" width="20"/>
-  <svg-img class="circle cr-8" name="Circle" height="15" width="15"/>
-  <svg-img class="circle cr-9" name="Circle" height="55" width="55"/>
-  <svg-img class="circle cr-10" name="Circle" height="45" width="45"/>
-  <svg-img class="vulkan" name="Vulkan"/>
+  <svg-img class="circle cr-1" name="Circle" height="100" width="100" />
+  <svg-img class="circle cr-2" name="Circle" height="20" width="20" />
+  <svg-img class="circle cr-3" name="Circle" height="65" width="65" />
+  <svg-img class="circle cr-4" name="Circle" height="60" width="60" />
+  <svg-img class="circle cr-5" name="Circle" height="20" width="20" />
+  <svg-img class="circle cr-6" name="Circle" height="20" width="20" />
+  <svg-img class="circle cr-7" name="Circle" height="20" width="20" />
+  <svg-img class="circle cr-8" name="Circle" height="15" width="15" />
+  <svg-img class="circle cr-9" name="Circle" height="55" width="55" />
+  <svg-img class="circle cr-10" name="Circle" height="45" width="45" />
+  <svg-img class="vulkan" name="Vulkan" />
 </template>
 
 <script>
@@ -18,7 +18,7 @@ import SvgImg from "@/components/ui/svg-img.vue";
 export default {
   name: "VulkanBackground",
   components: { SvgImg },
-}
+};
 </script>
 
 <style scoped>
@@ -27,6 +27,13 @@ export default {
   bottom: 0;
   left: 0;
   z-index: 1;
+}
+
+@media (min-width: 980px) {
+  .vulkan {
+    height: 370px;
+    left: -6%;
+  }
 }
 
 .circle {

@@ -1,13 +1,13 @@
 <template>
   <div class="events-list">
     <event-item
-        class="events-list__item"
-        v-for="event in events"
-        :id="event.id"
-        :geo="event.geo"
-        :date="event.date"
-        :name="event.name"
-        :key="`${event.id}_${event.name}`"
+      class="events-list__item"
+      v-for="event in events"
+      :id="event.id"
+      :geo="event.geo"
+      :date="event.date"
+      :name="event.name"
+      :key="`${event.id}_${event.name}`"
     />
   </div>
 </template>
@@ -18,7 +18,7 @@ import { defineComponent } from "vue";
 import EventItem from "@/components/user/events/event-item.vue";
 
 export default defineComponent({
-  name: "events",
+  name: "events-box",
 
   components: {
     EventItem,

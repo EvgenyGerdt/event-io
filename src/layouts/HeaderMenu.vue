@@ -1,42 +1,55 @@
 <template>
   <header class="header-menu__container">
-    <h1 class="header-menu__title">
-      EVENT MANAGER
-    </h1>
+    <div class="header-menu__title">
+      <div>
+        <input v-model="themeSwitch" id="switch" type="checkbox" />
+        <label for="switch">
+          <transition name="fade" mode="in-out" duration="100">
+            <font-awesome-icon v-if="!themeSwitch" icon="sun" />
+            <font-awesome-icon v-else icon="moon" />
+          </transition>
+        </label>
+      </div>
+      <h1 class="header-menu__title-text">EVENT MANAGER</h1>
+      <div class="header-menu__title-logout">
+        <span>EXIT</span>
+        <font-awesome-icon icon="arrow-right-from-bracket" />
+      </div>
+    </div>
 
     <div class="header-menu__menu-bar">
       <router-link
-          to="/profile"
-          class="header-menu__menu-bar-link"
-          :class="route.name === 'Profile' ? 'active' : ''"
+        to="/profile"
+        class="header-menu__menu-bar-link"
+        :class="route.name === 'Profile' ? 'active' : ''"
       >
         Profile
       </router-link>
       <router-link
-          to="/friends"
-          class="header-menu__menu-bar-link"
-          :class="route.name === 'Friends' ? 'active' : ''"
+        to="/friends"
+        class="header-menu__menu-bar-link"
+        :class="route.name === 'Friends' ? 'active' : ''"
       >
         Friends
       </router-link>
       <router-link
-          to="/messages"
-          class="header-menu__menu-bar-link"
-          :class="route.name === 'Messages' ? 'active' : ''"
+        to="/messages"
+        class="header-menu__menu-bar-link"
+        :class="route.name === 'Messages' ? 'active' : ''"
       >
         Messages
       </router-link>
       <router-link
-          to="/events"
-          class="header-menu__menu-bar-link"
-          :class="route.name === 'Events' ? 'active' : ''"
+        to="/events"
+        class="header-menu__menu-bar-link"
+        :class="route.name === 'Events' ? 'active' : ''"
       >
         Events
       </router-link>
       <router-link
-          to="/settings"
-          class="header-menu__menu-bar-link"
-          :class="route.name === 'Settings' ? 'active' : ''"
+        to="/settings"
+        class="header-menu__menu-bar-link"
+        :class="route.name === 'Settings' ? 'active' : ''"
       >
         Settings
       </router-link>
@@ -54,7 +67,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onBeforeMount, onBeforeUnmount } from "vue";
+import { defineComponent, onBeforeMount, onBeforeUnmount, ref } from "vue";
 import { useRoute } from "vue-router";
 import useSocket from "@/hooks/useSocket";
 
@@ -72,32 +85,34 @@ export default defineComponent({
   },
 
   setup() {
+    const themeSwitch = ref(false);
     const socket = useSocket();
     const route: RouteLocationNormalized = useRoute();
 
-    onBeforeMount(() => socket.emit("user_connected",
-        {
-          user: new Connection({
-            userId: localStorage.getItem('id') as string,
-            id: socket.id,
-          })
-        })
+    onBeforeMount(() =>
+      socket.emit("user_connected", {
+        user: new Connection({
+          userId: localStorage.getItem("id") as string,
+          id: socket.id,
+        }),
+      })
     );
 
-    onBeforeUnmount(() => socket.emit("user_disconnected",
-        {
-          user: new Connection({
-            userId: localStorage.getItem('id') as string,
-            id: socket.id,
-          })
-        })
+    onBeforeUnmount(() =>
+      socket.emit("user_disconnected", {
+        user: new Connection({
+          userId: localStorage.getItem("id") as string,
+          id: socket.id,
+        }),
+      })
     );
 
     return {
       route,
+      themeSwitch,
     };
   },
-})
+});
 </script>
 
 <style lang="scss" scoped>
@@ -108,15 +123,40 @@ export default defineComponent({
   }
 
   &__title {
-    background-image: -webkit-linear-gradient(0.45turn, #3AACFF, #D639EF);
-    background-size: 100%;
-    background-repeat: repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    &-text {
+      background-image: -webkit-linear-gradient(0.45turn, #3aacff, #d639ef);
+      background-size: 100%;
+      background-repeat: repeat;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
 
-    margin-bottom: 50px;
+      margin-bottom: 50px;
 
-    font-weight: bold;
+      font-weight: bold;
+    }
+
+    &-logout {
+      color: #a0a0a0;
+      cursor: pointer;
+
+      &:hover {
+        background-image: -webkit-linear-gradient(0.45turn, #3aacff, #d639ef);
+        background-size: 100%;
+        background-repeat: repeat;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        color: #9e33ff;
+      }
+
+      > span {
+        margin-right: 10px;
+        font-weight: bold;
+      }
+    }
   }
 
   &__menu {
@@ -126,7 +166,7 @@ export default defineComponent({
         font-weight: bold;
         text-decoration: none;
 
-        color: #A0A0A0;
+        color: #a0a0a0;
 
         margin: 0 15px;
 

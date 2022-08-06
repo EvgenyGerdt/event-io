@@ -10,14 +10,13 @@
 </template>
 
 <script lang="ts">
-
 export default {
   name: "CardBox",
 
   props: {
     title: {
       type: String,
-      default: '',
+      default: "",
     },
   },
 };
@@ -28,6 +27,7 @@ export default {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   padding: 10px 15px;
+  background: white;
 }
 
 .card-title {

@@ -1,6 +1,6 @@
 <template>
   <RouterView v-slot="{ Component }" v-if="!auth.isAuthenticated">
-    <component :is="Component"/>
+    <component :is="Component" />
     <VulkanBackground />
     <BalloonBackground />
     <WavesBackground />
@@ -23,9 +23,9 @@ import { useAuth } from "@/stores/auth";
 import Loader from "@/layouts/Loader.vue";
 
 import HeaderMenu from "@/layouts/HeaderMenu.vue";
-import VulkanBackground from "@/components/ui/background/VulkanBackground.vue";
-import BalloonBackground from "@/components/ui/background/BalloonBackground.vue";
-import WavesBackground from "@/components/ui/background/WavesBackground.vue";
+import VulkanBackground from "@/layouts/VulkanBackground.vue";
+import BalloonBackground from "@/layouts/BalloonBackground.vue";
+import WavesBackground from "@/layouts/WavesBackground.vue";
 
 export default defineComponent({
   name: "App",
@@ -57,13 +57,13 @@ export default defineComponent({
 @font-face {
   font-family: "InterRegular";
   src: local("InterRegular"),
-  url("./assets/fonts/Inter-Regular.ttf") format("truetype");
+    url("./assets/fonts/Inter-Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "InterBold";
   src: local("InterBold"),
-  url("./assets/fonts/Inter-Bold.ttf") format("truetype");
+    url("./assets/fonts/Inter-Bold.ttf") format("truetype");
 }
 
 body {
@@ -74,7 +74,12 @@ body {
   font-family: "InterRegular", sans-serif;
 }
 
-h1, h2, h3, h4, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h4,
+h5 {
   font-family: "InterBold", sans-serif;
 }
 
@@ -83,20 +88,24 @@ body {
   margin: 0;
 }
 
-button, a {
+button,
+a {
   cursor: pointer;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
 a:hover {
   opacity: 0.8;
 }
 
-input, select {
+input,
+select {
   outline: none;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 </style>

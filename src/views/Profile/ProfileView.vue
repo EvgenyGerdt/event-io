@@ -9,22 +9,19 @@
         {{ user.firstName }} {{ user.lastName }}
       </span>
 
-      <div
-          class="profile-view__header-status"
-          :class="{ online: user.online }"
-      >
-        {{ user.online ? 'Online' : 'Offline' }}
+      <div class="profile-view__header-status" :class="{ online: user.online }">
+        {{ user.online ? "Online" : "Offline" }}
       </div>
     </div>
 
     <div class="profile-view__main">
-<!--      <div class="profile-view__preferences">-->
-<!--        <card-box title="Preferences">-->
-<!--          <template #content>-->
+      <!--      <div class="profile-view__preferences">-->
+      <!--        <card-box title="Preferences">-->
+      <!--          <template #content>-->
 
-<!--          </template>-->
-<!--        </card-box>-->
-<!--      </div>-->
+      <!--          </template>-->
+      <!--        </card-box>-->
+      <!--      </div>-->
       <div class="profile-view__main-bottom">
         <div class="profile-view__main-bottom-events">
           <card-box class="profile-view__main-bottom-card" title="Events">
@@ -51,7 +48,6 @@ import { useProfile } from "@/stores/profile";
 
 import type { User } from "@/types/User";
 
-import HeaderMenu from "@/layouts/HeaderMenu.vue";
 import CardBox from "@/components/CardBox.vue";
 
 import Friends from "@/components/user/friends.vue";
@@ -61,7 +57,6 @@ export default defineComponent({
   name: "ProfileView",
 
   components: {
-    HeaderMenu,
     CardBox,
     Friends,
     Events,
@@ -69,17 +64,18 @@ export default defineComponent({
 
   async setup() {
     const profile = useProfile();
-    const user: User = await profile.loadProfile() as User;
+    const user: User = (await profile.loadProfile()) as User;
 
-    const emptyAvatarInitials = computed(() => `${user.firstName.charAt(0)}${user.lastName.charAt(0)}`);
-
+    const emptyAvatarInitials = computed(
+      () => `${user.firstName.charAt(0)}${user.lastName.charAt(0)}`
+    );
 
     return {
       emptyAvatarInitials,
       user,
     };
   },
-})
+});
 </script>
 
 <style lang="scss" scoped>
@@ -112,7 +108,7 @@ export default defineComponent({
 
       color: white;
 
-      background: -webkit-linear-gradient(0.45turn, #3AACFF, #D639EF);
+      background: -webkit-linear-gradient(0.45turn, #3aacff, #d639ef);
       border-radius: 50%;
 
       margin-bottom: 10px;
@@ -127,11 +123,11 @@ export default defineComponent({
 
     &-status {
       font-size: 18px;
-      color: #A0A0A0;
+      color: #a0a0a0;
     }
 
     &-status.online {
-      color: #3AACFF;
+      color: #3aacff;
     }
   }
 

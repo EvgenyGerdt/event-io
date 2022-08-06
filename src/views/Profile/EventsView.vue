@@ -1,13 +1,9 @@
-<template>
-
-</template>
+<template></template>
 
 <script>
 export default {
-  name: "EventsView"
-}
+  name: "EventsView",
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
