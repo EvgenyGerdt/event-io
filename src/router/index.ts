@@ -42,7 +42,7 @@ const router = createRouter({
             {
               path: "/messages/:id",
               name: "Chat",
-              component: () => import("@/views/Chat/Chat.vue"),
+              component: () => import("@/components/messages/MessagesBox.vue"),
             },
           ],
         },

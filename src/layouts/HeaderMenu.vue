@@ -35,7 +35,7 @@
       <router-link
         to="/messages"
         class="header-menu__menu-bar-link"
-        :class="route.name === 'Messages' ? 'active' : ''"
+        :class="route.path.includes('messages') ? 'active' : ''"
       >
         Messages
       </router-link>

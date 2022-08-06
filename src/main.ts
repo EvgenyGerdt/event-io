@@ -18,6 +18,7 @@ import {
   faFaceFrown,
   faUserPlus,
   faUserMinus,
+  faFaceRollingEyes,
 } from "@fortawesome/free-solid-svg-icons";
 
 import App from "./App.vue";
@@ -39,7 +40,8 @@ library.add(
   faFaceFrown,
   faUserPlus,
   faUserMinus,
-  faArrowRightFromBracket
+  faArrowRightFromBracket,
+  faFaceRollingEyes
 );
 
 const socket = io("http://localhost:3000", {

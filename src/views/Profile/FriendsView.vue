@@ -50,7 +50,7 @@ export default defineComponent({
     const searchField = useDebouncedRef("", 1000, false);
     const friends = useFriends();
 
-    watch(searchField, (newValue) => friends.findList(newValue));
+    watch(searchField, (newValue) => friends.findList(newValue as string));
 
     return {
       searchField,
