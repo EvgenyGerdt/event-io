@@ -11,7 +11,7 @@
         </label>
       </div>
       <h1 class="header-menu__title-text">EVENT MANAGER</h1>
-      <div class="header-menu__title-logout">
+      <div class="header-menu__title-logout" @click="logout">
         <span>EXIT</span>
         <font-awesome-icon icon="arrow-right-from-bracket" />
       </div>
@@ -68,14 +68,17 @@
 
 <script lang="ts">
 import { defineComponent, onBeforeMount, onBeforeUnmount, ref } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
+
+import { useAuth } from "@/stores/auth";
+import { useProfile } from "@/stores/profile";
 import useSocket from "@/hooks/useSocket";
 
 import Loader from "@/layouts/Loader.vue";
 
 import Connection from "@/models/Connection";
 
-import type { RouteLocationNormalized } from "vue-router";
+import type { RouteLocationNormalized, Router } from "vue-router";
 
 export default defineComponent({
   name: "HeaderMenu",
@@ -88,6 +91,16 @@ export default defineComponent({
     const themeSwitch = ref(false);
     const socket = useSocket();
     const route: RouteLocationNormalized = useRoute();
+    const router: Router = useRouter();
+
+    const profile = useProfile();
+    const auth = useAuth();
+
+    const logout = () => {
+      profile.clear();
+      auth.logout();
+      router.push({ name: "Auth" });
+    };
 
     onBeforeMount(() =>
       socket.emit("user_connected", {
@@ -110,6 +123,7 @@ export default defineComponent({
     return {
       route,
       themeSwitch,
+      logout,
     };
   },
 });

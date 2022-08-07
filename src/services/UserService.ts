@@ -7,11 +7,7 @@ export default class UserService {
     const id = localStorage.getItem("id");
 
     return await instance
-      .get(`/user/${id}`, {
-        headers: {
-          Authorization: localStorage.getItem("token") as string,
-        },
-      })
+      .get(`/user/${id}`)
       .then((res: AxiosResponse<User>) => res.data);
   }
 }

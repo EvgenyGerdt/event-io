@@ -26,5 +26,10 @@ export const useProfile = defineStore("profile", {
 
       return this.data;
     },
+
+    clear() {
+      this.data = {} as User;
+      this.loaded = false;
+    },
   },
 });

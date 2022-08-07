@@ -5,7 +5,7 @@
       <span>Send first message!</span>
     </div>
 
-    <div class="messages-box__content" v-else>
+    <div class="messages-box__content" id="chat" v-else>
       <div
         class="messages-box__content-item"
         v-for="(message, index) in chat.messages"
@@ -53,6 +53,11 @@ export default defineComponent({
 
     const empty: ComputedRef<boolean> = computed(() => chat.data.length === 0);
 
+    const scrollChatDown = () => {
+      const chatElement = document.getElementById("chat") as Element;
+      chatElement.scrollTo(0, chatElement.scrollHeight);
+    };
+
     watch(
       () => route.params.id,
       (value) => value && chat.loadChat(value as string)
@@ -70,6 +75,7 @@ export default defineComponent({
 
       chat.addMessage(message);
       messageBody.value = "";
+      scrollChatDown();
     };
 
     const formatDate = (date: Date) => {
@@ -78,7 +84,10 @@ export default defineComponent({
 
     socket.on("message", ({ message }) => chat.addMessage(message));
 
-    onMounted(() => chat.loadChat(route.params.id as string));
+    onMounted(async () => {
+      await chat.loadChat(route.params.id as string);
+      scrollChatDown();
+    });
 
     return {
       empty,
@@ -102,7 +111,7 @@ export default defineComponent({
     flex-direction: column;
     justify-content: flex-end;
     > input {
-      height: 40px;
+      height: 60px;
       border: none;
 
       padding: 0 15px;
@@ -141,15 +150,27 @@ export default defineComponent({
     &-item {
       margin: 10px 0;
 
+      &.owner,
+      &.other {
+        > div {
+          width: fit-content;
+          padding: 10px;
+          border-radius: 1em;
+        }
+      }
+
       &.owner {
         text-align: right;
 
         > div {
-          width: fit-content;
-          padding: 10px;
           color: white;
           background: dodgerblue;
-          border-radius: 1em;
+
+          float: right;
+
+          > div {
+            color: #eaeaea;
+          }
         }
       }
 
@@ -157,10 +178,9 @@ export default defineComponent({
         text-align: left;
 
         > div {
-          width: fit-content;
-          padding: 10px;
           background: #eaeaea;
-          border-radius: 1em;
+
+          float: left;
         }
       }
     }

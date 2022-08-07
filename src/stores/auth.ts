@@ -25,5 +25,10 @@ export const useAuth = defineStore("auth", {
     async register(user: RegisterCredentials) {
       await AuthService.register(user);
     },
+
+    logout() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("id");
+    },
   },
 });

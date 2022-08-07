@@ -152,6 +152,8 @@ export default defineComponent({
       }
 
       &-body {
+        text-align: left;
+
         &-personal {
           display: flex;
           justify-content: flex-start;
@@ -167,6 +169,10 @@ export default defineComponent({
         &-last {
           opacity: 0.7;
           font-weight: lighter;
+          white-space: nowrap;
+          inline-size: 10px;
+          overflow: hidden;
+          width: 150px;
         }
       }
     }
